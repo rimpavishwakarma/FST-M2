@@ -1,0 +1,16 @@
+--Activity 1
+
+CREATE TABLE episodeIV (character STRING, lines STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES("skip.header.line.count"="2");
+LOAD DATA LOCAL INPATH '/episodeIV_dialouges.txt' INTO TABLE episodeIV;
+SELECT character, COUNT(character) AS no_of_lines FROM episodeIV GROUP BY character ORDER BY no_of_lines;
+
+CREATE TABLE episodeV (character STRING, lines STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES("skip.header.line.count"="2");
+LOAD DATA LOCAL INPATH '/episodeV_dialouges.txt' INTO TABLE episodeV;
+SELECT character, COUNT(character) AS no_of_lines FROM episodeV GROUP BY character ORDER BY no_of_lines;
+
+CREATE TABLE episodeVI (character STRING, lines STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES("skip.header.line.count"="2");
+LOAD DATA LOCAL INPATH '/episodeVI_dialouges.txt' INTO TABLE episodeVI;
+SELECT character, COUNT(character) AS no_of_lines FROM episodeVI GROUP BY character ORDER BY no_of_lines;
+
+--Activity 2
+SELECT COUNT(*) FROM episodeV WHERE INSTR (lines, 'Luke')>0;
